@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { CharacterContextProvider } from "@/contexts/CharacterContext";
+// import sla from "../../public/marvel-icon.svg";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,6 +18,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/marvel-icon.svg" sizes="any" />
+        {/* Ou, se você estiver usando um favicon em outro formato, como PNG ou SVG */}
+        {/* <link rel="icon" href="/favicon.png" type="image/png" /> */}
+        {/* <link rel="icon" href="/favicon.svg" type="image/svg+xml" /> */}
+      </head>
       <body className={inter.className}>
         <CharacterContextProvider>{children}</CharacterContextProvider>
       </body>

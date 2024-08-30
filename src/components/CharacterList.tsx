@@ -9,28 +9,32 @@ export function CharacterList() {
 
   const { searchCharacter } = useContext(CharacterContext);
 
-  const corInfos = (search: string) => {
-    if (search != "") {
-      const { isFetching, data } = useSearchCharacters(
-        curPage,
-        searchCharacter
-      );
+  // const corInfos = (search: string) => {
+  //   if (search != "") {
+  //     const { isFetching, data } = useSearchCharacters(
+  //       curPage,
+  //       searchCharacter
+  //     );
 
-      return {
-        isFetching,
-        data,
-      };
-    } else {
-      const { isFetching, data } = useCharacters(curPage, searchCharacter);
+  //     return {
+  //       isFetching,
+  //       data,
+  //     };
+  //   } else {
+  //     const { isFetching, data } = useCharacters(curPage, searchCharacter);
 
-      return {
-        isFetching,
-        data,
-      };
-    }
-  };
+  //     return {
+  //       isFetching,
+  //       data,
+  //     };
+  //   }
+  // };
 
-  const { isFetching, data } = corInfos(searchCharacter);
+  // const { isFetching, data } = corInfos(searchCharacter);
+
+  const { isFetching, data } = searchCharacter
+    ? useSearchCharacters(curPage, searchCharacter)
+    : useCharacters(curPage, searchCharacter);
 
   // const { isFetching, data } = useCharacters(curPage);
   // const { isFetching, data } = useSearchCharacters(curPage, searchCharacter);
@@ -52,6 +56,7 @@ export function CharacterList() {
           data.results.map((e: any) => {
             return (
               <CardCharacter
+                key={e.id}
                 id={e.id}
                 name={e.name}
                 description={e.description}
