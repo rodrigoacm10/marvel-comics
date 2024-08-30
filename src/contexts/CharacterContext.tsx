@@ -9,6 +9,8 @@ export const CharacterContext = createContext({
   setCharacterId: (val: number) => {},
   searchCharacter: "",
   setSearchCharacter: (val: string) => {},
+  filterCharacter: 0,
+  setFilterCharacter: (val: number) => {},
 });
 
 interface CharacterContextProviderProps {
@@ -21,6 +23,7 @@ export function CharacterContextProvider({
   const [characterVisible, setCharacterVisible] = useState(false);
   const [characterId, setCharacterId] = useState(0);
   const [searchCharacter, setSearchCharacter] = useState("");
+  const [filterCharacter, setFilterCharacter] = useState(0);
 
   return (
     <CharacterContext.Provider
@@ -31,6 +34,8 @@ export function CharacterContextProvider({
         setCharacterId,
         searchCharacter,
         setSearchCharacter,
+        filterCharacter,
+        setFilterCharacter,
       }}
     >
       {children}

@@ -3,44 +3,28 @@ import { useContext, useEffect, useState } from "react";
 import { CardCharacter } from "./CardCharacter";
 import { useSearchCharacters } from "@/hooks/useSearchCharacters";
 import { CharacterContext } from "@/contexts/CharacterContext";
+import { Loader } from "lucide-react";
+import { FilterCharacter } from "./FilterCharacter";
 
 export function CharacterList() {
   const [curPage, setCurPage] = useState<number>(0);
 
-  const { searchCharacter } = useContext(CharacterContext);
-
-  // const corInfos = (search: string) => {
-  //   if (search != "") {
-  //     const { isFetching, data } = useSearchCharacters(
-  //       curPage,
-  //       searchCharacter
-  //     );
-
-  //     return {
-  //       isFetching,
-  //       data,
-  //     };
-  //   } else {
-  //     const { isFetching, data } = useCharacters(curPage, searchCharacter);
-
-  //     return {
-  //       isFetching,
-  //       data,
-  //     };
-  //   }
-  // };
-
-  // const { isFetching, data } = corInfos(searchCharacter);
+  const { searchCharacter, filterCharacter } = useContext(CharacterContext);
 
   // hooks sem condicional
-  const searchResult = useSearchCharacters(curPage, searchCharacter);
-  const characterResult = useCharacters(curPage, searchCharacter);
+  const searchResult = useSearchCharacters(
+    curPage,
+    searchCharacter,
+    filterCharacter
+  );
+  const characterResult = useCharacters(
+    curPage,
+    searchCharacter,
+    filterCharacter
+  );
 
   // qual resultado usar
   const { isFetching, data } = searchCharacter ? searchResult : characterResult;
-
-  // const { isFetching, data } = useCharacters(curPage);
-  // const { isFetching, data } = useSearchCharacters(curPage, searchCharacter);
 
   const totalPages = Math.ceil(data?.total / data?.results.length);
 
@@ -54,8 +38,9 @@ export function CharacterList() {
 
   return (
     <>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {data?.results ? (
+      <FilterCharacter />
+      <div className="mt-2 flex-1 w-full  grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-2">
+        {!isFetching ? (
           data.results.map((e: any) => {
             return (
               <CardCharacter
@@ -68,10 +53,13 @@ export function CharacterList() {
             );
           })
         ) : (
-          <p>nada encontrado</p>
+          <div className="flex-1 col-span-1 sm:col-span-2 md:col-span-3 lg:col-span-4 w-full   flex items-center justify-center ">
+            {" "}
+            <Loader color="#ffffff" />
+          </div>
         )}
       </div>
-      <div className="flex justify-end gap-2 bg-marvel-red">
+      <div className="flex justify-end gap-2  ">
         <button
           onClick={() => {
             if (curPage / 8 > 0) {

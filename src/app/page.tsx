@@ -15,9 +15,9 @@ export default function Home() {
 
   return (
     <QueryClientProvider client={client}>
-      <main className="min-h-screen bg-primary-dark">
+      <main className="min-h-screen flex flex-col bg-primary-dark">
         <Header />
-        <div className="p-6">
+        <div className="flex-1 flex flex-col    h-full p-6">
           <CharacterList />
         </div>
 
