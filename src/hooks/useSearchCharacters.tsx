@@ -1,9 +1,9 @@
-import { fetchCharacters } from "@/lib/fetchCharacters";
+import { fetchSearchCharacters } from "@/lib/fetchCharacters";
 import { useQuery } from "@tanstack/react-query";
 
-export function useCharacters(curPage: number, searchName: string) {
+export function useSearchCharacters(curPage: number, searchName: string) {
   const { data, isFetching } = useQuery({
-    queryFn: () => fetchCharacters(curPage),
+    queryFn: () => fetchSearchCharacters(curPage, searchName),
     queryKey: ["characters", curPage, searchName],
     // staleTime: 1000 * 60 * 1,
   });

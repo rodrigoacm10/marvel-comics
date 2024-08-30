@@ -13,7 +13,7 @@ export default function IconMarvel() {
         viewBox="0 0 50 50"
         xmlSpace="preserve"
         width={120}
-        height={70}
+        height={90}
       >
         <path
           d="M0,15h50v20H0V15z M42.313,19.628v-3.08h-8.571l-1.41,10.29l-1.395-10.29h-3.091l0.346,2.746

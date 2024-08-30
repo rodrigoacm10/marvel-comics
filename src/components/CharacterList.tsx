@@ -1,13 +1,39 @@
 import { useCharacters } from "@/hooks/useCharacters";
-import { useQuery } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
-import { DEFAULT_MAX_VERSION } from "tls";
+import { useContext, useEffect, useState } from "react";
 import { CardCharacter } from "./CardCharacter";
+import { useSearchCharacters } from "@/hooks/useSearchCharacters";
+import { CharacterContext } from "@/contexts/CharacterContext";
 
 export function CharacterList() {
   const [curPage, setCurPage] = useState<number>(0);
 
-  const { data } = useCharacters(curPage);
+  const { searchCharacter } = useContext(CharacterContext);
+
+  const corInfos = (search: string) => {
+    if (search != "") {
+      const { isFetching, data } = useSearchCharacters(
+        curPage,
+        searchCharacter
+      );
+
+      return {
+        isFetching,
+        data,
+      };
+    } else {
+      const { isFetching, data } = useCharacters(curPage, searchCharacter);
+
+      return {
+        isFetching,
+        data,
+      };
+    }
+  };
+
+  const { isFetching, data } = corInfos(searchCharacter);
+
+  // const { isFetching, data } = useCharacters(curPage);
+  // const { isFetching, data } = useSearchCharacters(curPage, searchCharacter);
 
   const totalPages = Math.ceil(data?.total / data?.results.length);
 
@@ -18,13 +44,6 @@ export function CharacterList() {
   };
 
   console.log(data, totalPages);
-
-  //   const getInfos = () => {
-  //     console.log(data);
-  //   };
-  //   useEffect(() => {
-  //     getInfos();
-  //   });
 
   return (
     <>

@@ -7,6 +7,8 @@ export const CharacterContext = createContext({
   setCharacterVisible: (val: boolean) => {},
   characterId: 0,
   setCharacterId: (val: number) => {},
+  searchCharacter: "",
+  setSearchCharacter: (val: string) => {},
 });
 
 interface CharacterContextProviderProps {
@@ -18,6 +20,7 @@ export function CharacterContextProvider({
 }: CharacterContextProviderProps) {
   const [characterVisible, setCharacterVisible] = useState(false);
   const [characterId, setCharacterId] = useState(0);
+  const [searchCharacter, setSearchCharacter] = useState("");
 
   return (
     <CharacterContext.Provider
@@ -26,6 +29,8 @@ export function CharacterContextProvider({
         setCharacterVisible,
         characterId,
         setCharacterId,
+        searchCharacter,
+        setSearchCharacter,
       }}
     >
       {children}
