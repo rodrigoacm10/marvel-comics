@@ -32,9 +32,12 @@ export function CharacterList() {
 
   // const { isFetching, data } = corInfos(searchCharacter);
 
-  const { isFetching, data } = searchCharacter
-    ? useSearchCharacters(curPage, searchCharacter)
-    : useCharacters(curPage, searchCharacter);
+  // hooks sem condicional
+  const searchResult = useSearchCharacters(curPage, searchCharacter);
+  const characterResult = useCharacters(curPage, searchCharacter);
+
+  // qual resultado usar
+  const { isFetching, data } = searchCharacter ? searchResult : characterResult;
 
   // const { isFetching, data } = useCharacters(curPage);
   // const { isFetching, data } = useSearchCharacters(curPage, searchCharacter);
