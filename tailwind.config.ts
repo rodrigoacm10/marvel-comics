@@ -23,6 +23,7 @@ const config = {
         "primary-dark": "var(--text-primary-dark)",
         "secondary-dark": "var(--text-secondary-dark)",
         "tertiary-dark": "var(--text-tertiary-dark)",
+        "quarternary-dark": "var(--color-border-dark)",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
