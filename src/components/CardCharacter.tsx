@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import { Card, CardContent } from "./ui/card";
+import { CharacterContext } from "@/contexts/CharacterContext";
 
 export function CardCharacter({
   id,
@@ -11,14 +13,16 @@ export function CardCharacter({
   description: string;
   imageIcon: string;
 }) {
+  const { setCharacterVisible, setCharacterId } = useContext(CharacterContext);
+
   return (
     <Card
       onClick={() => {
-        console.log(id);
-        console.log("clickou");
+        setCharacterId(id);
+        setCharacterVisible(true);
       }}
       key={id}
-      className="border-quarternary-dark rounded-lg overflow-hidden bg-secondary-dark h-[350px] transition duration-300 hover:-translate-y-1 "
+      className="border-quarternary-dark rounded-lg overflow-hidden bg-secondary-dark h-[350px] transition duration-300 hover:-translate-y-1  "
     >
       <img
         src={imageIcon}
@@ -29,7 +33,7 @@ export function CardCharacter({
         style={{ objectFit: "cover" }}
       />
       <CardContent className="bg-secondary-dark p-4 text-white">
-        <h3 className="text-lg font-semibold mb-2">{name}</h3>
+        <h3 className="text-lg truncate font-semibold mb-2">{name}</h3>
         <p className="text-sm line-clamp-2 min-h-10  text-[#d5d2d1]">
           {description ? description : "nenhuma descrição relatada"}
         </p>

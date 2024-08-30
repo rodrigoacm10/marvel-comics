@@ -1,25 +1,26 @@
-import { fetchCharacters } from "@/lib/fetchCharacters";
+import { fetchOneCharacter } from "@/lib/fetchCharacters";
+import { characterTypes } from "@/types/characterTypes";
 import { useQuery } from "@tanstack/react-query";
 
-export function useCharacters(curPage: number) {
+export function useOneCharacter(id: number) {
   const { data, isFetching } = useQuery({
-    queryFn: () => fetchCharacters(curPage),
-    queryKey: ["characters", curPage],
+    queryFn: () => fetchOneCharacter(id),
+    queryKey: ["character", id],
     // staleTime: 1000 * 60 * 1,
   });
 
   if (data) {
     return {
       isFetching,
+
       data: data,
     };
   } else {
     return {
       isFetching,
+
       data: {
-        total: 0,
-        nextOffset: 0,
-        results: [],
+        results: {} as characterTypes,
       },
     };
   }

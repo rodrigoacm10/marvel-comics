@@ -1,5 +1,6 @@
-import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
-import axios from "axios";
+import { characterTypes } from "@/types/characterTypes";
+import { MarvelAPIResponse } from "@/types/marvelApiResponse";
+import axios, { AxiosResponse } from "axios";
 
 // faz a requisição para a API com o limite de paginas
 export const fetchCharacters = async (pageParam = 0) => {
@@ -13,9 +14,12 @@ export const fetchCharacters = async (pageParam = 0) => {
 
   // &offset=0
 
-  const response = await axios.get(
-    `https://gateway.marvel.com/v1/public/characters?ts=1&limit=${limit}&offset=${pageParam}&apikey=${publicKey}&hash=${hash}`
-  );
+  // console.log(await fetcher(), "aaaaa");
+
+  const response: AxiosResponse<MarvelAPIResponse<characterTypes>> =
+    await axios.get<MarvelAPIResponse<characterTypes>>(
+      `https://gateway.marvel.com/v1/public/characters?ts=1&limit=${limit}&offset=${pageParam}&apikey=${publicKey}&hash=${hash}`
+    );
 
   return {
     results: response.data.data.results,
@@ -34,11 +38,14 @@ export const fetchOneCharacter = async (characterId: number) => {
   // const response = await axios.get(
   //   `https://gateway.marvel.com/v1/public/characters?ts=1&limit=${limit}&offset=${pageParam}&apikey=${publicKey}&hash=${hash}`
   // );
-  const response = await axios.get(
-    `https://gateway.marvel.com:443/v1/public/characters/${characterId}?ts=1&apikey=${publicKey}&hash=${hash}`
-  );
+  const response: AxiosResponse<MarvelAPIResponse<characterTypes>> =
+    await axios.get<MarvelAPIResponse<characterTypes>>(
+      `https://gateway.marvel.com:443/v1/public/characters/${characterId}?ts=1&apikey=${publicKey}&hash=${hash}`
+    );
+
+  console.log(response, "unico");
 
   return {
-    results: response,
+    results: response.data.data.results[0],
   };
 };

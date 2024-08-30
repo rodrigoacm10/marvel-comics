@@ -74,3 +74,18 @@
     @apply bg-background text-foreground;
   }
 }
+
+.custombar-clean::-webkit-scrollbar {
+  width: 4px; /* Largura da scrollbar */
+}
+
+.custombar-clean::-webkit-scrollbar-track {
+  background: #dbdbdb; /* Cor do fundo da scrollbar */
+  border-radius: 10px; /* Arredondamento da barra */
+}
+
+.custombar-clean::-webkit-scrollbar-thumb {
+  background-color: #828282; /* Cor da barra */
+  border-radius: 10px; /* Arredondamento da barra */
+  /* border: 3px solid #f1f1f1; Espaçamento entre a barra e a track */
+}
