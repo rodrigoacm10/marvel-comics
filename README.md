@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<!-- This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
 
@@ -33,4 +33,56 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details. -->
+
+# MERX Energia - Teste Prático
+
+## Tecnologias Utilizadas
+
+- **Typescript**
+- **Next.js**
+- **Tailwind CSS**
+
+## Bibliotecas
+
+- **shadcn/ui**
+- **axios**
+- **tanStack Query**
+- **lodash**
+
+## Instalação e Execução em uma Máquina Local
+
+1. Acesse a [Documentação da Marvel](https://developer.marvel.com/documentation/getting_started) e crie uma conta no site da Marvel.
+2. Entre na área do desenvolvedor para obter sua **chave pública** e **chave privada**.
+
+3. Acesse um [gerador de hash MD5](https://www.md5hashgenerator.com/) e converta o seguinte valor:
+
+```1 + chave privada + chave pública
+
+```
+
+4. Copie a hash resultante.
+
+5. Baixe o repositório e crie um arquivo `.env` com as seguintes variáveis:
+
+```plaintext
+NEXT_PUBLIC_KEY={sua_chave_publica}
+NEXT_PUBLIC_HASH_KEY={hash_que_foi_gerada}
+```
+
+6. Execute o comando:
+
+```npm install
+
+
+```
+
+7. Logo em seguida, execute:
+
+```npm run dev
+
+```
+
+## Deploy
+
+[https://marvel-comics-nu.vercel.app/](https://marvel-comics-nu.vercel.app/)
