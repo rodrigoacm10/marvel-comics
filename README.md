@@ -57,7 +57,8 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 3. Acesse um [gerador de hash MD5](https://www.md5hashgenerator.com/) e converta o seguinte valor:
 
-```1 + chave privada + chave pública
+```plaintext
+1 + chave privada + chave pública
 
 ```
 
@@ -72,14 +73,16 @@ NEXT_PUBLIC_HASH_KEY={hash_que_foi_gerada}
 
 6. Execute o comando:
 
-```npm install
+```plaintext
+npm install
 
 
 ```
 
 7. Logo em seguida, execute:
 
-```npm run dev
+```plaintext
+npm run dev
 
 ```
 
