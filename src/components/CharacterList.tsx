@@ -40,7 +40,7 @@ export function CharacterList() {
         ""
       )}
 
-      <div className="mt-2 flex-1 w-full  grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-2">
+      <div className="mt-2 flex-1 w-full  grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-x-6 md:gap-x-3 lg:gap-x-6 gap-y-2">
         {!isFetching ? (
           data.results.map((e: any) => {
             return (
