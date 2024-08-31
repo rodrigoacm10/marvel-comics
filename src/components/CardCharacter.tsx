@@ -22,7 +22,7 @@ export function CardCharacter({
         setCharacterVisible(true);
       }}
       key={id}
-      className="border-quarternary-dark rounded-lg overflow-hidden bg-secondary-dark h-[350px] transition duration-300 hover:-translate-y-1  "
+      className="hover:bg-marvel-red hover:cursor-pointer border-quarternary-dark rounded-lg overflow-hidden bg-secondary-dark h-[350px] transition duration-300 hover:-translate-y-1  "
     >
       <img
         src={imageIcon}
@@ -32,7 +32,7 @@ export function CardCharacter({
         className="rounded-t-lg object-cover w-full h-60"
         style={{ objectFit: "cover" }}
       />
-      <CardContent className="bg-secondary-dark p-4 text-white">
+      <CardContent className="  p-4 text-white">
         <h3 className="text-lg truncate font-semibold mb-2">{name}</h3>
         <p className="text-sm line-clamp-2 min-h-10  text-[#d5d2d1]">
           {description ? description : "no description reported"}

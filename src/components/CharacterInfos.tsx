@@ -20,7 +20,7 @@ export function CharacterInfos() {
       <Card className="z-50 min-w-[300px] min-h-[350px] h-[80%] w-[70%] rounded-[5px]  bg-secondary-dark  top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 relative  overflow-hidden">
         {isFetching ? (
           <div className="flex items-center justify-center h-full">
-            <Loader color="#ffffff" size={26} />
+            <Loader className="animate-spin" color="#ffffff" size={26} />
           </div>
         ) : (
           <div className="h-full overflow-hidden  grid grid-rows-[40%_60%] md:grid-cols-2">
@@ -74,7 +74,11 @@ export function CharacterInfos() {
           }}
           className="absolute top-2 right-2 "
         >
-          <IoMdClose color="#ffffff" size={26} />
+          {/* color="#ffffff" */}
+          <IoMdClose
+            className="text-black bg-white rounded-md md:bg-transparent md:text-white"
+            size={26}
+          />
         </button>
       </Card>
     </div>

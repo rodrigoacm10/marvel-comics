@@ -3,6 +3,7 @@
 import { CardCharacter } from "@/components/CardCharacter";
 import { CharacterInfos } from "@/components/CharacterInfos";
 import { CharacterList } from "@/components/CharacterList";
+import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { CharacterContext } from "@/contexts/CharacterContext";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -15,7 +16,7 @@ export default function Home() {
 
   return (
     <QueryClientProvider client={client}>
-      <main className="min-h-screen flex flex-col bg-primary-dark">
+      <main className="min-h-screen flex flex-col bg-primary-dark pb-10">
         <Header />
         <div className="flex-1 flex flex-col    h-full p-6">
           <CharacterList />
@@ -23,6 +24,7 @@ export default function Home() {
 
         {characterVisible ? <CharacterInfos /> : ""}
       </main>
+      <Footer />
     </QueryClientProvider>
   );
 }

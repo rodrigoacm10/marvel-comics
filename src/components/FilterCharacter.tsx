@@ -12,7 +12,8 @@ import { Input } from "./ui/input";
 import { FaSearch } from "react-icons/fa";
 
 export function FilterCharacter() {
-  const { filterCharacter, setFilterCharacter } = useContext(CharacterContext);
+  const { filterCharacter, setFilterCharacter, setCurPage } =
+    useContext(CharacterContext);
 
   return (
     <div className="flex flex-col gap-2 justify-end items-end">
@@ -27,6 +28,7 @@ export function FilterCharacter() {
               return;
             }
             setFilterCharacter(+e.target.value);
+            setCurPage(0);
           }}
         />
         <button className="absolute top-3 left-4">

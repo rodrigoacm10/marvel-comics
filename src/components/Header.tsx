@@ -6,10 +6,11 @@ import { CharacterContext } from "@/contexts/CharacterContext";
 import { debounce } from "lodash";
 
 export function Header() {
-  const { searchCharacter, setSearchCharacter } = useContext(CharacterContext);
+  const { searchCharacter, setSearchCharacter, setCurPage } =
+    useContext(CharacterContext);
 
   const handleSubmited = () => {
-    console.log(searchCharacter);
+    setSearchCharacter(searchCharacter);
     // Aqui você faria a requisição para a API
   };
 
@@ -17,7 +18,7 @@ export function Header() {
   const debouncedSearch = useCallback(
     debounce((value) => {
       setSearchCharacter(value);
-      handleSubmited();
+      setCurPage(0);
     }, 500),
     []
   );

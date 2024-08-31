@@ -32,6 +32,14 @@ export function CharacterList() {
   return (
     <>
       <FilterCharacter />
+      {filterCharacter != 0 ? (
+        <p className="text-white mt-1 text-[12px] sm:text-lg  font-semibold">
+          Characters that appear in comic number: {filterCharacter}
+        </p>
+      ) : (
+        ""
+      )}
+
       <div className="mt-2 flex-1 w-full  grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-2">
         {!isFetching ? (
           data.results.map((e: any) => {
@@ -48,7 +56,7 @@ export function CharacterList() {
         ) : (
           <div className="flex-1 col-span-1 sm:col-span-2 md:col-span-3 lg:col-span-4 w-full   flex items-center justify-center ">
             {" "}
-            <Loader color="#ffffff" />
+            <Loader className="animate-spin" color="#ffffff" />
           </div>
         )}
       </div>
