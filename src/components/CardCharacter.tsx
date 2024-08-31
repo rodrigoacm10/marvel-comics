@@ -35,7 +35,7 @@ export function CardCharacter({
       <CardContent className="bg-secondary-dark p-4 text-white">
         <h3 className="text-lg truncate font-semibold mb-2">{name}</h3>
         <p className="text-sm line-clamp-2 min-h-10  text-[#d5d2d1]">
-          {description ? description : "nenhuma descrição relatada"}
+          {description ? description : "no description reported"}
         </p>
       </CardContent>
     </Card>

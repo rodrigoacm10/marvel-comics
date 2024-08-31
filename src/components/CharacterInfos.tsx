@@ -4,15 +4,12 @@ import { IoMdClose } from "react-icons/io";
 import { CharacterContext } from "@/contexts/CharacterContext";
 import { useOneCharacter } from "@/hooks/useOneCharacter";
 import { Loader } from "lucide-react";
-import backgroundComic from "../assets/comic-background.jpg";
-import Image from "next/image";
 
 export function CharacterInfos() {
   const { setCharacterVisible, characterId, setCharacterId } =
     useContext(CharacterContext);
 
   const { data, isFetching } = useOneCharacter(characterId);
-  console.log(data);
 
   return (
     <div
@@ -28,7 +25,7 @@ export function CharacterInfos() {
         ) : (
           <div className="h-full overflow-hidden  grid grid-rows-[40%_60%] md:grid-cols-2">
             {" "}
-            <div className="h-full  relative rounded-l-lg bg-tertiary-dark">
+            <div className="h-full  relative rounded-l-lg bg-marvel-red">
               <img
                 src={`${data.results?.thumbnail?.path}.${data.results?.thumbnail?.extension}`}
                 alt={data.results.name}
@@ -38,11 +35,7 @@ export function CharacterInfos() {
                 className="z-auto rounded-ss-lg object-cover w-full md:min-h-[350px] md:max-h-[1000px] h-full"
                 style={{ objectFit: "cover" }}
               />{" "}
-              <Image
-                className="  md:block    hidden  h-[140%] object-cover "
-                src={backgroundComic}
-                alt="comic background"
-              />
+              <div className="comic-background hidden md:block bg-marvel-red h-screen"></div>
             </div>
             <CardContent className="custombar-clean overflow-y-scroll md:overflow-visible h-full">
               <h2 className="text-white text-xl font-semibold mt-4">
@@ -52,7 +45,7 @@ export function CharacterInfos() {
                 {" "}
                 {data.results.description
                   ? data.results.description
-                  : "Nenhuma descrição relatada"}
+                  : "no description reported"}
               </p>
 
               <div className="mt-6 text-white text-sm grid grid-cols-2 sm:grid-cols-3  gap-6">

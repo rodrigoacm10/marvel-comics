@@ -5,6 +5,7 @@ import { FaArrowRight } from "react-icons/fa";
 
 export function PaginationControl({ totalPages }: { totalPages: number }) {
   const { curPage, setCurPage } = useContext(CharacterContext);
+  console.log(curPage, totalPages);
 
   return (
     <div className="mt-3 flex justify-end gap-2  ">
@@ -48,14 +49,14 @@ export function PaginationControl({ totalPages }: { totalPages: number }) {
           <button
             className="flex items-center justify-center  text-white bg-secondary-dark hover:bg-primary-dark border-tertiary-dark border rounded-lg p-3 "
             onClick={() => {
-              if (curPage < 1560) {
+              if (curPage / 8 < totalPages - 1) {
                 setCurPage(curPage + 8);
               } else {
                 setCurPage(0);
               }
             }}
           >
-            {curPage < 1560 ? (curPage + 8) / 8 + 1 : 1}
+            {curPage / 8 < totalPages - 1 ? (curPage + 8) / 8 + 1 : 1}
           </button>
         ) : (
           <div></div>
@@ -63,7 +64,7 @@ export function PaginationControl({ totalPages }: { totalPages: number }) {
         <button
           className="flex hover:bg-primary-dark items-center justify-center bg-secondary-dark border-tertiary-dark border rounded-lg p-3 "
           onClick={() => {
-            if (curPage + 1 < totalPages && !isNaN(totalPages)) {
+            if (curPage / 8 < totalPages - 1 && !isNaN(totalPages)) {
               setCurPage(curPage + 8);
             } else {
               setCurPage(0);

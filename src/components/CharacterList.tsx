@@ -25,7 +25,9 @@ export function CharacterList() {
   // qual resultado usar
   const { isFetching, data } = searchCharacter ? searchResult : characterResult;
 
-  const totalPages = Math.ceil(data?.total / data?.results.length);
+  const totalPages = Math.ceil(data?.total / 8);
+
+  console.log(data, totalPages);
 
   return (
     <>
@@ -50,7 +52,7 @@ export function CharacterList() {
           </div>
         )}
       </div>
-      <PaginationControl totalPages={totalPages} />
+      {!isFetching ? <PaginationControl totalPages={totalPages} /> : ""}
     </>
   );
 }

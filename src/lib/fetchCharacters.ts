@@ -13,8 +13,6 @@ export const fetchCharacters = async (pageParam = 0, filter: number) => {
       ? `https://gateway.marvel.com/v1/public/characters?ts=1&limit=${limit}&offset=${pageParam}&apikey=${publicKey}&hash=${hash}`
       : `https://gateway.marvel.com/v1/public/characters?comics=${filter}&ts=1&limit=${limit}&offset=${pageParam}&apikey=${publicKey}&hash=${hash}`;
 
-  console.log("aa", urlToPass);
-
   const response: AxiosResponse<MarvelAPIResponse<characterTypes>> =
     await axios.get<MarvelAPIResponse<characterTypes>>(urlToPass);
 
