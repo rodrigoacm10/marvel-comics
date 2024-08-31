@@ -4,6 +4,8 @@ import { IoMdClose } from "react-icons/io";
 import { CharacterContext } from "@/contexts/CharacterContext";
 import { useOneCharacter } from "@/hooks/useOneCharacter";
 import { Loader } from "lucide-react";
+import backgroundComic from "../assets/comic-background.jpg";
+import Image from "next/image";
 
 export function CharacterInfos() {
   const { setCharacterVisible, characterId, setCharacterId } =
@@ -18,23 +20,28 @@ export function CharacterInfos() {
       className="fixed  h-screen w-full top-0 left-0   opacity-2 z-40"
     >
       {/* pt-10 px-10 pt-8 px-1 */}
-      <Card className="z-50 min-w-[300px] min-h-[350px] h-[80%] w-[70%]   fixed   rounded-[5px]  bg-secondary-dark  top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 relative  ">
+      <Card className="z-50 min-w-[300px] min-h-[350px] h-[80%] w-[70%] rounded-[5px]  bg-secondary-dark  top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 relative  overflow-hidden">
         {isFetching ? (
           <div className="flex items-center justify-center h-full">
             <Loader color="#ffffff" size={26} />
           </div>
         ) : (
-          <div className="h-full  grid grid-rows-[40%_60%] md:grid-cols-2">
+          <div className="h-full overflow-hidden  grid grid-rows-[40%_60%] md:grid-cols-2">
             {" "}
-            <div className="h-full rounded-l-lg bg-tertiary-dark">
+            <div className="h-full  relative rounded-l-lg bg-tertiary-dark">
               <img
                 src={`${data.results?.thumbnail?.path}.${data.results?.thumbnail?.extension}`}
                 alt={data.results.name}
                 width={300}
                 // height={400}
-                height={"100%"}
-                className=" rounded-ss-lg object-cover w-full md:min-h-[350px] md:max-h-[1000px] h-full"
+                // height={"100%"}
+                className="z-auto rounded-ss-lg object-cover w-full md:min-h-[350px] md:max-h-[1000px] h-full"
                 style={{ objectFit: "cover" }}
+              />{" "}
+              <Image
+                className="  md:block    hidden  h-[140%] object-cover "
+                src={backgroundComic}
+                alt="comic background"
               />
             </div>
             <CardContent className="custombar-clean overflow-y-scroll md:overflow-visible h-full">

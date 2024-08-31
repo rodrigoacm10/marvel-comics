@@ -7,57 +7,72 @@ export function PaginationControl({ totalPages }: { totalPages: number }) {
   const { curPage, setCurPage } = useContext(CharacterContext);
 
   return (
-    <div className="bg-marvel-red mt-3 flex justify-end gap-2  ">
-      <button
-        onClick={() => {
-          if (curPage / 8 > 0) {
-            setCurPage(curPage - 8);
-          } else {
-            setCurPage(totalPages * 8 - 8);
-          }
-        }}
-      >
-        <FaArrowLeft color="#ffffff" />
-      </button>
-      <button
-        onClick={() => {
-          //   setCurPage(
-          //     correctNum(curPage, "minus") === -1
-          //       ? 196
-          //       : correctNum(curPage, "minus") * 8
-          //   );
-        }}
-      >
-        {/* {correctNum(curPage, "minus") === -1
-          ? totalPages
-          : correctNum(curPage, "minus") + 1} */}
-      </button>
+    <div className="mt-3 flex justify-end gap-2  ">
+      <div className="grid grid-cols-5 gap-1">
+        <button
+          className="flex hover:bg-primary-dark items-center justify-center bg-secondary-dark border-tertiary-dark border rounded-lg p-3 "
+          onClick={() => {
+            if (curPage / 8 > 0 && !isNaN(totalPages)) {
+              setCurPage(curPage - 8);
+            } else if (!isNaN(totalPages)) {
+              setCurPage(totalPages * 8 - 8);
+            } else {
+              setCurPage(0);
+            }
+          }}
+        >
+          <FaArrowLeft color="#ffffff" />
+        </button>
+        {totalPages != 1 && !isNaN(totalPages) ? (
+          <button
+            className="  hover:bg-primary-dark flex items-center justify-center bg-secondary-dark text-white border-tertiary-dark border rounded-lg p-3 "
+            onClick={() => {
+              if (curPage != 0) {
+                setCurPage(curPage - 8);
+              } else {
+                setCurPage(totalPages * 8 - 8);
+              }
+            }}
+          >
+            {curPage != 0 ? (curPage - 8) / 8 + 1 : totalPages}
+          </button>
+        ) : (
+          <div></div>
+        )}
 
-      <button>{/* {data.nextOffset / 8} */}</button>
+        <button className="flex items-center justify-center   text-white  bg-primary-dark border-tertiary-dark border rounded-lg p-3 ">
+          {curPage / 8 + 1}
+        </button>
 
-      <button
-        onClick={() => {
-          //   setCurPage(
-          //     correctNum(curPage, "plus") === totalPages + 1
-          //       ? 0
-          //       : correctNum(curPage, "plus") * 8
-          //   );
-        }}
-      >
-        {/* {data.nextOffset === 204 ? 1 : correctNum(curPage, "plus") + 1} */}
-      </button>
-
-      <button
-        onClick={() => {
-          if (curPage < 1560) {
-            setCurPage(curPage + 8);
-          } else {
-            setCurPage(0);
-          }
-        }}
-      >
-        <FaArrowRight color="#ffffff" />
-      </button>
+        {totalPages != 1 && !isNaN(totalPages) ? (
+          <button
+            className="flex items-center justify-center  text-white bg-secondary-dark hover:bg-primary-dark border-tertiary-dark border rounded-lg p-3 "
+            onClick={() => {
+              if (curPage < 1560) {
+                setCurPage(curPage + 8);
+              } else {
+                setCurPage(0);
+              }
+            }}
+          >
+            {curPage < 1560 ? (curPage + 8) / 8 + 1 : 1}
+          </button>
+        ) : (
+          <div></div>
+        )}
+        <button
+          className="flex hover:bg-primary-dark items-center justify-center bg-secondary-dark border-tertiary-dark border rounded-lg p-3 "
+          onClick={() => {
+            if (curPage + 1 < totalPages && !isNaN(totalPages)) {
+              setCurPage(curPage + 8);
+            } else {
+              setCurPage(0);
+            }
+          }}
+        >
+          <FaArrowRight color="#ffffff" />
+        </button>
+      </div>
     </div>
   );
 }
