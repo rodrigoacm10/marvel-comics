@@ -6,7 +6,7 @@ export function useOneCharacter(id: number) {
   const { data, isFetching } = useQuery({
     queryFn: () => fetchOneCharacter(id),
     queryKey: ["character", id],
-    // staleTime: 1000 * 60 * 1,
+    staleTime: 1000 * 60 * 10,
   });
 
   if (data) {

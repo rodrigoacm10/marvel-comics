@@ -18,7 +18,7 @@ export function CharacterInfos() {
       className="fixed  h-screen w-full top-0 left-0   opacity-2 z-40"
     >
       {/* pt-10 px-10 pt-8 px-1 */}
-      <Card className="z-50 min-w-[300px] min-h-[350px] h-[80%] w-[70%]   fixed pb-2 rounded-[5px]  bg-secondary-dark  top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 relative  ">
+      <Card className="z-50 min-w-[300px] min-h-[350px] h-[80%] w-[70%]   fixed   rounded-[5px]  bg-secondary-dark  top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 relative  ">
         {isFetching ? (
           <div className="flex items-center justify-center h-full">
             <Loader color="#ffffff" size={26} />
