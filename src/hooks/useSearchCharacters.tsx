@@ -10,6 +10,7 @@ export function useSearchCharacters(
     queryFn: () => fetchSearchCharacters(curPage, searchName, filter),
     queryKey: ["characters", curPage, searchName, filter],
     staleTime: 1000 * 60 * 10,
+    enabled: searchName !== "",
   });
 
   if (data) {

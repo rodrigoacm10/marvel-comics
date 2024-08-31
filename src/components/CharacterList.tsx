@@ -11,7 +11,6 @@ export function CharacterList() {
   const { searchCharacter, filterCharacter, curPage, setCurPage } =
     useContext(CharacterContext);
 
-  // hooks sem condicional
   const searchResult = useSearchCharacters(
     curPage,
     searchCharacter,
@@ -25,17 +24,8 @@ export function CharacterList() {
 
   // qual resultado usar
   const { isFetching, data } = searchCharacter ? searchResult : characterResult;
-  // const { isFetching, data } = characterResult;
 
   const totalPages = Math.ceil(data?.total / data?.results.length);
-
-  const correctNum = (num: number, type: "minus" | "plus") => {
-    return type === "minus"
-      ? num / data?.results.length - 1
-      : num / data?.results.length + 1;
-  };
-
-  console.log(data, totalPages);
 
   return (
     <>
