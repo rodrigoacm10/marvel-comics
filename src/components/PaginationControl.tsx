@@ -13,9 +13,9 @@ export function PaginationControl({ totalPages }: { totalPages: number }) {
         <button
           className="flex hover:bg-primary-dark items-center justify-center bg-secondary-dark border-tertiary-dark border rounded-lg p-3 "
           onClick={() => {
-            if (curPage / 8 > 0 && !isNaN(totalPages)) {
+            if (curPage / 8 > 0 && !isNaN(totalPages) && totalPages != 0) {
               setCurPage(curPage - 8);
-            } else if (!isNaN(totalPages)) {
+            } else if (!isNaN(totalPages) && totalPages != 0) {
               setCurPage(totalPages * 8 - 8);
             } else {
               setCurPage(0);
@@ -24,7 +24,7 @@ export function PaginationControl({ totalPages }: { totalPages: number }) {
         >
           <FaArrowLeft color="#ffffff" />
         </button>
-        {totalPages != 1 && !isNaN(totalPages) ? (
+        {totalPages != 1 && !isNaN(totalPages) && totalPages != 0 ? (
           <button
             className="  hover:bg-primary-dark flex items-center justify-center bg-secondary-dark text-white border-tertiary-dark border rounded-lg p-3 "
             onClick={() => {
@@ -45,7 +45,7 @@ export function PaginationControl({ totalPages }: { totalPages: number }) {
           {curPage / 8 + 1}
         </button>
 
-        {totalPages != 1 && !isNaN(totalPages) ? (
+        {totalPages != 1 && !isNaN(totalPages) && totalPages != 0 ? (
           <button
             className="flex items-center justify-center  text-white bg-secondary-dark hover:bg-primary-dark border-tertiary-dark border rounded-lg p-3 "
             onClick={() => {

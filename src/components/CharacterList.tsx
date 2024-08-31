@@ -8,7 +8,7 @@ import { FilterCharacter } from "./FilterCharacter";
 import { PaginationControl } from "./PaginationControl";
 
 export function CharacterList() {
-  const { searchCharacter, filterCharacter, curPage, setCurPage } =
+  const { searchCharacter, filterCharacter, curPage } =
     useContext(CharacterContext);
 
   const searchResult = useSearchCharacters(
@@ -34,13 +34,20 @@ export function CharacterList() {
       <FilterCharacter />
       {filterCharacter != 0 ? (
         <p className="text-white mt-1 text-[12px] sm:text-lg  font-semibold">
-          Characters that appear in comic number: {filterCharacter}
+          Characters that appear in this comic
         </p>
       ) : (
         ""
       )}
 
       <div className="mt-2 flex-1 w-full  grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-x-6 md:gap-x-3 lg:gap-x-6 gap-y-2">
+        {!isFetching && data.results.length === 0 ? (
+          <p className="text-white text-sm">
+            no character registration in this comic, try another
+          </p>
+        ) : (
+          ""
+        )}
         {!isFetching ? (
           data.results.map((e: any) => {
             return (

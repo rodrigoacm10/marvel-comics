@@ -38,7 +38,7 @@ export function Header() {
           // value={searchCharacter}
           // onChange={(e) => setSearchCharacter(e.target.value)}
           // onKeyDown={handleKeyDown}
-          placeholder="procurar personagem..."
+          placeholder="search character..."
           defaultValue={searchCharacter}
           onChange={handleChange}
           className="pl-10 bg-marvel-red text-white"
