@@ -94,7 +94,7 @@ export function FilterCharacter() {
                 {data.results.map((e) => {
                   return (
                     <button
-                      className="py-1 max-w-[180px] truncate"
+                      className="hover:bg-primary-dark rounded-md p-1 max-w-[180px] truncate"
                       key={e.id}
                       onClick={() => {
                         handleButtonClick();

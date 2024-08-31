@@ -37,6 +37,10 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 # MERX Energia - Teste Prático
 
+## Deploy
+
+[https://marvel-comics-nu.vercel.app/](https://marvel-comics-nu.vercel.app/)
+
 ## Tecnologias Utilizadas
 
 - **Typescript**
@@ -59,7 +63,6 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ```plaintext
 1 + chave privada + chave pública
-
 ```
 
 4. Copie a hash resultante.
@@ -75,17 +78,10 @@ NEXT_PUBLIC_HASH_KEY={hash_que_foi_gerada}
 
 ```plaintext
 npm install
-
-
 ```
 
 7. Logo em seguida, execute:
 
 ```plaintext
 npm run dev
-
 ```
-
-## Deploy
-
-[https://marvel-comics-nu.vercel.app/](https://marvel-comics-nu.vercel.app/)
